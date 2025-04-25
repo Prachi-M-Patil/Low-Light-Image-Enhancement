@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer Pro</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Enhancer Pro</h1>
+            <p>Best for darken images and PSR images of Moon </p>
+        </header>
+        
+        <div class="upload-section">
+            <h2>Upload Your Image</h2>
+            <p>Support formats: PNG, JPG, JPEG, SCGE</p>
+            <div class="upload-box" id="uploadBox">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Drag & Drop or Click to Upload</h3>
+                <p>Maximum file size: 10MB</p>
+                <input type="file" id="fileInput" class="file-input" accept=".png,.jpg,.jpeg,.scge">
+                <button class="btn">Select File</button>
+            </div>
+        </div>
+        
+        <div class="loading" id="loadingSection">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <h3>Enhancing your image...</h3>
+            <p>This may take a few moments</p>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <h2>Enhancement Results</h2>
+            <p>Compare your original image with our enhanced versions</p>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <img id="originalImage" src="" alt="Original Image">
+                    <div class="card-content">
+                        <h3>Original Image</h3>
+                        <p>Your uploaded image before enhancement</p>
+                    </div>
+                </div>
+                
+                <div class="result-card">
+                    <img id="enhancedImage1" src="" alt="Enhanced Image 1">
+                    <div class="card-content">
+                        <h3>Enhancement Type 1</h3>
+                        <p>AI-powered enhancement focusing on clarity and detail</p>
+                        <a href="#" class="download-btn" id="download1">Download</a>
+                    </div>
+                </div>
+                
+                <div class="result-card">
+                    <img id="enhancedImage2" src="" alt="Enhanced Image 2">
+                    <div class="card-content">
+                        <h3>Enhancement Type 2</h3>
+                        <p>AI-powered enhancement focusing on color and contrast</p>
+                        <a href="#" class="download-btn" id="download2">Download</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-slider" id="comparisonSlider">
+                <div class="slider-after">
+                    <img id="sliderAfterImg" src="" alt="Enhanced">
+                </div>
+                <div class="slider-before">
+                    <img id="sliderBeforeImg" src="" alt="Original">
+                </div>
+                <div class="slider-handle" id="sliderHandle"></div>
+            </div>
+        </div>
+        
+        <div class="welcome-message" id="welcomeMessage">
+            <h2>Advanced Image Enhancement</h2>
+            <p>Our cutting-edge AI technology analyzes and enhances your images to bring out details, improve clarity, and optimize colors. Perfect for photographers, designers, and anyone looking to improve their visual content.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Smart Enhancement</h3>
+                    <p>Our  algorithms intelligently enhance your images by analyzing what needs improvement</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Low Light Image Enhancer</h3>
+                    <p>Image taken in low light also can be efficiently enhanced</p>
+                    <p>Transform your images into better enhanced image</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Multiple Enhancement Types</h3>
+                    <p>Choose from different enhancement styles to get the perfect look for your images</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Image Enhancer Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
