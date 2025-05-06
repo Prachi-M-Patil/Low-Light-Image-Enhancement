@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing App</title>
+    <link rel="stylesheet" href="../static/css/filter.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Image Processing with Filters</h1>
+        </header>
+
+        <div class="upload-section">
+            <h2>Upload an Image</h2>
+            <form id="image-upload-form" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" accept="image/*" required>
+                <button type="submit" id="upload-btn">Upload Image</button>
+            </form>
+        </div>
+
+        <div class="image-display">
+            <h2>Original Image</h2>
+            <img id="original-image" src="" alt="Original Image" class="image-preview">
+        </div>
+
+        <div class="filters-section">
+            <h2>Apply Filters</h2>
+
+            <!-- Gaussian Filter -->
+            <div class="filter">
+                <h3>Gaussian Blur</h3>
+                <form id="gaussian-form" enctype="multipart/form-data">
+                    <label for="kernel_size">Kernel Size:</label>
+                    <input type="number" id="kernel_size" name="kernel_size" min="3" max="15" value="5">
+                    <button type="button" id="apply-gaussian-btn">Apply Gaussian Blur</button>
+                </form>
+                <img id="gaussian-result" src="" alt="Gaussian Filter Result" class="image-preview">
+            </div>
+
+            <!-- Median Filter -->
+            <div class="filter">
+                <h3>Median Filter</h3>
+                <form id="median-form" enctype="multipart/form-data">
+                    <label for="kernel_size_median">Kernel Size:</label>
+                    <input type="number" id="kernel_size_median" name="kernel_size" min="3" max="15" value="3">
+                    <button type="button" id="apply-median-btn">Apply Median Filter</button>
+                </form>
+                <img id="median-result" src="" alt="Median Filter Result" class="image-preview">
+            </div>
+
+            <!-- Histogram Equalization YUV Filter -->
+            <div class="filter">
+                <h3>Histogram Equalization (YUV)</h3>
+                <form id="hist-eq-form" enctype="multipart/form-data">
+                    <button type="button" id="apply-hist-eq-btn">Apply Histogram Equalization</button>
+                </form>
+                <img id="hist-eq-result" src="" alt="Histogram Equalization Result" class="image-preview">
+            </div>
+
+            <!-- CLAHE Filter -->
+            <div class="filter">
+                <h3>CLAHE (Contrast Limited Adaptive Histogram Equalization)</h3>
+                <form id="clahe-form" enctype="multipart/form-data">
+                    <label for="clip_limit">Clip Limit:</label>
+                    <input type="number" id="clip_limit" name="clip_limit" step="0.1" value="2.0">
+                    <label for="grid_size">Grid Size:</label>
+                    <input type="number" id="grid_size" name="grid_size" value="8" min="2" max="10">
+                    <button type="button" id="apply-clahe-btn">Apply CLAHE</button>
+                </form>
+                <img id="clahe-result" src="" alt="CLAHE Result" class="image-preview">
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/filter.js"></script>
+
+</body>
+</html>

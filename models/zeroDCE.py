@@ -37,7 +37,7 @@ class ZeroDCE(keras.Model):
 
 
 
-def load_ZeroDCE_model(weights_path='modelZeroDCE.h5'):
+def load_ZeroDCE_model(weights_path='models/modelZeroDCE.h5'):
     print("Loading Zero-DCE model...")
     model = ZeroDCE()
     
@@ -53,9 +53,17 @@ def load_ZeroDCE_model(weights_path='modelZeroDCE.h5'):
 
 
 def infer_zerodce(image: Image.Image, model) -> Image.Image:
+    # Convert to RGB if necessary
+    if image.mode != 'RGB':
+        print(f"Converting image from {image.mode} to RGB...")
+        image = image.convert('RGB')
+
+    # Resize to prevent memory issues
+    MAX_SIZE = (1024, 1024)
+    image.thumbnail(MAX_SIZE, Image.Resampling.LANCZOS)
+
     # Convert to array and normalize
-    img_array = keras.utils.img_to_array(image)
-    img_array = img_array.astype("float32") / 255.0
+    img_array = keras.utils.img_to_array(image).astype("float32") / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
     # Run model inference

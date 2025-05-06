@@ -29,7 +29,7 @@ class ChannelPooling(layers.Layer):
         return config
     
 
-def load_mirnet_model(model_path='mirnet_model.keras'):
+def load_mirnet_model(model_path='models/mirnet_model.keras'):
     print("Loading MIRNet model...")
     model = load_model(
         model_path,

@@ -1,6 +1,12 @@
 __pycache__/
-venv/
-uploads/
+*.pyc
 
-mirnet_model.keras
-modelZeroDCE.h5
+venv/
+
+uploads/
+filtered_images/
+adjusted_images/
+
+
+models/mirnet_model.keras
+models/modelZeroDCE.h5

@@ -4,105 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Enhancer Pro</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Image Enhancer Pro</h1>
-            <p>Best for darken images and PSR images of Moon </p>
+            <p>Professional image enhancement tool for low-light and astronomical photography</p>
         </header>
         
-        <div class="upload-section">
-            <h2>Upload Your Image</h2>
-            <p>Support formats: PNG, JPG, JPEG, SCGE</p>
-            <div class="upload-box" id="uploadBox">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h3>Drag & Drop or Click to Upload</h3>
-                <p>Maximum file size: 10MB</p>
-                <input type="file" id="fileInput" class="file-input" accept=".png,.jpg,.jpeg,.scge">
-                <button class="btn">Select File</button>
-            </div>
-        </div>
-        
-        <div class="loading" id="loadingSection">
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-            <h3>Enhancing your image...</h3>
-            <p>This may take a few moments</p>
-        </div>
-        
-        <div class="results-section" id="resultsSection">
-            <h2>Enhancement Results</h2>
-            <p>Compare your original image with our enhanced versions</p>
-            
-            <div class="results-grid">
-                <div class="result-card">
-                    <img id="originalImage" src="" alt="Original Image">
-                    <div class="card-content">
-                        <h3>Original Image</h3>
-                        <p>Your uploaded image before enhancement</p>
-                    </div>
-                </div>
-                
-                <div class="result-card">
-                    <img id="enhancedImage1" src="" alt="Enhanced Image 1">
-                    <div class="card-content">
-                        <h3>Enhancement Type 1</h3>
-                        <p>AI-powered enhancement focusing on clarity and detail</p>
-                        <a href="#" class="download-btn" id="download1">Download</a>
-                    </div>
-                </div>
-                
-                <div class="result-card">
-                    <img id="enhancedImage2" src="" alt="Enhanced Image 2">
-                    <div class="card-content">
-                        <h3>Enhancement Type 2</h3>
-                        <p>AI-powered enhancement focusing on color and contrast</p>
-                        <a href="#" class="download-btn" id="download2">Download</a>
-                    </div>
+        <div class="main-content">
+            <div class="upload-section" id="uploadSection">
+                <h2>Upload Your Image</h2>
+                <p>Supported formats: PNG, JPG, JPEG</p>
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop or Click to Upload</h3>
+                    <p>Maximum file size: 10MB</p>
+                    <input type="file" id="fileInput" class="file-input" accept=".png,.jpg,.jpeg">
+                    <button class="btn">Select File</button>
                 </div>
             </div>
             
-            <div class="comparison-slider" id="comparisonSlider">
-                <div class="slider-after">
-                    <img id="sliderAfterImg" src="" alt="Enhanced">
-                </div>
-                <div class="slider-before">
-                    <img id="sliderBeforeImg" src="" alt="Original">
-                </div>
-                <div class="slider-handle" id="sliderHandle"></div>
+            <div class="loading" id="loadingSection">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <h3>Enhancing your image...</h3>
+                <p>This may take a few moments</p>
             </div>
-        </div>
-        
-        <div class="welcome-message" id="welcomeMessage">
-            <h2>Advanced Image Enhancement</h2>
-            <p>Our cutting-edge AI technology analyzes and enhances your images to bring out details, improve clarity, and optimize colors. Perfect for photographers, designers, and anyone looking to improve their visual content.</p>
             
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-magic"></i>
+            <div class="results-section" id="resultsSection">
+                <h2>Enhancement Results</h2>
+                <p>Compare your original image with our enhanced versions</p>
+                
+                <div class="results-tools">
+                    <div class="adjustment-panel">
+                        <h3>Image Adjustments</h3>
+                        <div class="adjustment-controls">
+                            <div class="adjustment-group">
+                                <label for="brightnessInput">Brightness</label>
+                                <input type="range" id="brightnessInput" min="-100" max="100" value="0" class="slider">
+                                <span id="brightnessValue">0</span>
+                            </div>
+                            <div class="adjustment-group">
+                                <label for="contrastInput">Contrast</label>
+                                <input type="range" id="contrastInput" min="-100" max="100" value="0" class="slider">
+                                <span id="contrastValue">0</span>
+                            </div>
+                        </div>
+                        <button id="applyFilterButton" class="btn">Apply Adjustments</button>
                     </div>
-                    <h3>Smart Enhancement</h3>
-                    <p>Our  algorithms intelligently enhance your images by analyzing what needs improvement</p>
+                    
+                    <div class="filter-panel">
+                        <h3>Image Filters</h3>
+                        <div class="filter-controls">
+                            <div class="filter-group">
+                                <label for="filterSelect">Select Filter</label>
+                                <select id="filterSelect" class="filter-select">
+                                    <option value="none">No Filter</option>
+                                    <option value="gaussian">Gaussian Blur</option>
+                                    <option value="median">Median Blur</option>
+                                    <option value="histogram">Histogram Equalization</option>
+                                    <option value="clahe">CLAHE</option>
+                                    <option value="sharpen">Sharpen</option>
+                                </select>
+                            </div>
+                            <div class="filter-options" id="gaussianOptions">
+                                <label for="gaussianKernel">Kernel Size</label>
+                                <select id="gaussianKernel" class="parameter-select">
+                                    <option value="3">3x3</option>
+                                    <option value="5" selected>5x5</option>
+                                    <option value="7">7x7</option>
+                                    <option value="9">9x9</option>
+                                </select>
+                            </div>
+                            <div class="filter-options" id="medianOptions">
+                                <label for="medianKernel">Kernel Size</label>
+                                <select id="medianKernel" class="parameter-select">
+                                    <option value="3" selected>3x3</option>
+                                    <option value="5">5x5</option>
+                                    <option value="7">7x7</option>
+                                </select>
+                            </div>
+                            <div class="filter-options" id="claheOptions">
+                                <label for="claheClip">Clip Limit</label>
+                                <input type="range" id="claheClip" min="0.5" max="5" step="0.5" value="2" class="slider">
+                                <span id="claheClipValue">2.0</span>
+                                
+                                <label for="claheGrid">Grid Size</label>
+                                <select id="claheGrid" class="parameter-select">
+                                    <option value="4">4x4</option>
+                                    <option value="8" selected>8x8</option>
+                                    <option value="16">16x16</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="applyFilterButtonSeparate" class="btn">Apply Filter</button>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <img id="originalImage" src="" alt="Original Image">
+                        <div class="card-content">
+                            <h3>Original Image</h3>
+                            <p>Your uploaded image before enhancement</p>
+                        </div>
                     </div>
-                    <h3>Low Light Image Enhancer</h3>
-                    <p>Image taken in low light also can be efficiently enhanced</p>
-                    <p>Transform your images into better enhanced image</p>
+                    
+                    <div class="result-card">
+                        <img id="enhancedImage1" src="" alt="Enhanced Image 1">
+                        <div class="card-content">
+                            <h3>Zero-DCE Enhancement</h3>
+                            <p>AI-powered enhancement optimized for low-light images</p>
+                            <a href="#" class="download-btn" id="download1">Download</a>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <img id="enhancedImage2" src="" alt="Enhanced Image 2">
+                        <div class="card-content">
+                            <h3>MIRNet Enhancement</h3>
+                            <p>Advanced enhancement focusing on detail preservation</p>
+                            <a href="#" class="download-btn" id="download2">Download</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
+                <div class="comparison-slider" id="comparisonSlider">
+                    <div class="slider-after">
+                        <img id="sliderAfterImg" src="" alt="Enhanced">
                     </div>
-                    <h3>Multiple Enhancement Types</h3>
-                    <p>Choose from different enhancement styles to get the perfect look for your images</p>
+                    <div class="slider-before">
+                        <img id="sliderBeforeImg" src="" alt="Original">
+                    </div>
+                    <div class="slider-handle" id="sliderHandle"></div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="resetButton" class="btn btn-secondary">Reset Adjustments</button>
+                    <button id="uploadNewButton" class="btn">Upload New Image</button>
+                </div>
+            </div>
+            
+            <div class="welcome-message" id="welcomeMessage">
+                <h2>Advanced Image Enhancement</h2>
+                <p>Our cutting-edge AI technology analyzes and enhances your images to bring out details, improve clarity, and optimize colors. Perfect for photographers, astronomers, and anyone looking to improve low-light photos.</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>AI-Powered Enhancement</h3>
+                        <p>Our deep-learning algorithms intelligently enhance your images by analyzing what needs improvement</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3>Low Light Specialist</h3>
+                        <p>Optimized for night photography, ., imaging, and challenging lighting conditions</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Professional Controls</h3>
+                        <p>Fine-tune your results with advanced filters and precise brightness/contrast adjustments</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,6 +184,6 @@
         </footer>
     </div>
 
-    <script src="../static/js/script.js"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>
